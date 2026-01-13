@@ -22,7 +22,7 @@ def show_cars():
         tmp_cars = []
 
         for car in cars:
-            if brand in car['brand']:
+            if brand.lower() in car['brand'].lower():
                 tmp_cars.append(car)
 
         return render_template(
@@ -36,6 +36,7 @@ def show_cars():
         title='Show All Cars Page',
         cars=cars
     )
+
 
 
 @app.route('/cars/new', methods=['GET', 'POST'])
