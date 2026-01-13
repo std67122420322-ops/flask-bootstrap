@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{title}}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{title}}</h1>
+    <hr>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <a href="{{url_for('new_car')}}" class="btn btn-outline-success float-end">
+          <i class="bi bi-car-front"></i> Add New Car
+        </a>
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Model</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for car in cars %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{car.brand}}</td>
+            <td>{{car.model}}</td>
+            <td>
+              <a href="{{url_for('delete_car', id=car.id)}}" class="btn btn-outline-danger"> 
+                <i class="bi bi-trash3"></i> 
+                Delete
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+        
+        
+        
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
